@@ -1,6 +1,6 @@
 # Jolly Roger
 
-Programme Bash qui permet d'associer des soustitres aux épisodes d'une série correspondant.
+Programme Bash qui permet d'associer des soustitres aux épisodes d'une série correspondants.
 
 C'est un exercice simple pour découvrir TDD en Bash.
 
