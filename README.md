@@ -8,7 +8,7 @@ L'api de test automatisés est [shebang_unit].
 
 ## L'énoncé
 
-En tant que pirate fainéant mais malin, je souhaite pouvoir rassembler les soustitres et les épisodes d'une série, en faisant fit des fantaisies de nommage pour être compatible avec mon lecteur vidéo, le tout pour gagner un temps fou.
+**En tant** que pirate fainéant mais malin, **je souhaite** pouvoir rassembler les soustitres et les épisodes d'une série, pour être compatible avec mon lecteur vidéo, **afin de** gagner un temps fou.
 
 ## Test d'acceptation
 
