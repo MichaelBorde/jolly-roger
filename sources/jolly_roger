@@ -1,0 +1,19 @@
+source "sources/episode.sh"
+
+function programme() {
+  local repertoire_episodes=$1
+  local repertoire_soustitres=$2
+
+  local episode
+  for episode in $(find "${repertoire_episodes}" -name "*.avi"); do
+    local soustitre
+    for soustitre in $(find "${repertoire_soustitres}" -name "*.srt"); do
+      if episode__correspondent "${episode}" "${soustitre}"; then
+        local chemin_soustitre_corrige="$(episode__chemin_soustitre "${episode}")"
+        cp "${soustitre}" "${chemin_soustitre_corrige}"
+      fi
+    done
+  done
+}
+
+programme $@
