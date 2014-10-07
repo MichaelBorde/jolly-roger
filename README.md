@@ -2,7 +2,7 @@
 
 Programme Bash qui permet d'associer des soustitres aux épisodes d'une série correspondants.
 
-C'est un exercice simple pour découvrir TDD en Bash.
+C'est un exercice/kata simple pour découvrir TDD en Bash.
 
 L'api de test automatisés est [shebang_unit].
 
@@ -31,6 +31,6 @@ Après appel du programme j'obtiens le répertoire consolidés suivant :
 
 ## Notes
 
-L'exhaustivité sur les extensions de vidéo ou de soustitre, la profondeur des répertoires et bien d'autres simplifications peuvent être faites à but pédagogique.
+La non exhaustivité sur les extensions de vidéo ou de soustitre, la profondeur des répertoires et bien d'autres simplifications peuvent être faites à but pédagogique.
 
 [shebang_unit]: https://github.com/arpinum/shebang_unit
