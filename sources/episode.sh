@@ -4,7 +4,11 @@ function episode__chemin_soustitre() {
 }
 
 function episode__correspondent() {
-  local nom_episode=${1##*/}
-  local nom_soustitre=${2##*/}
-  [[ "${nom_episode%\.*}" == "${nom_soustitre%\.*}" ]]
+  local numero_episode="$(_numero_episode_depuis_nom_fichier "$1")"
+  local numero_soustitre="$(_numero_episode_depuis_nom_fichier "$2")"
+  [[ "${numero_episode}" == "${numero_soustitre}" ]]
+}
+
+function _numero_episode_depuis_nom_fichier() {
+  echo "$1" | sed "s/.*\([0-9]\)\{1,2\}.\([0-9]\)\{1,2\}.*/\1e\2/"
 }
