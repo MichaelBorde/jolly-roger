@@ -1,6 +1,9 @@
 function setup() {
   TMP="/tmp/${RANDOM}"
-  mkdir -p "${TMP}"
+  EPISODES="${TMP}/episodes"
+  SOUSTITRES="${TMP}/soustitres"
+  mkdir -p "${EPISODES}"
+  mkdir -p "${SOUSTITRES}"
 }
 
 function teardown() {
@@ -8,19 +11,21 @@ function teardown() {
 }
 
 function peut_copier_un_soustitre_avec_le_meme_nom_qu_un_episode() {
-  cp -a tests/un_episode_et_son_soustitre/* "${TMP}"
+  touch "${EPISODES}/ma.serie.s01e01.avi"
+  touch "${SOUSTITRES}/ma.serie.s01e01.srt"
 
-  ./sources/jolly_roger "${TMP}/episodes" "${TMP}/soustitres"
+  ./sources/jolly_roger "${EPISODES}" "${SOUSTITRES}"
 
-  assertion__successful _fichier_existe "${TMP}/episodes/ma.serie.s01e01.srt"
+  assertion__successful _fichier_existe "${SOUSTITRES}/ma.serie.s01e01.srt"
 }
 
 function ne_copie_pas_un_soustitre_qui_n_a_rien_a_voir() {
-  cp -a tests/un_episode_et_un_autre_soustitre/* "${TMP}"
+  touch "${EPISODES}/ma.serie.s01e01.avi"
+  touch "${SOUSTITRES}/ma.serie.s01e02.srt"
 
-  ./sources/jolly_roger "${TMP}/episodes" "${TMP}/soustitres"
+  ./sources/jolly_roger "${EPISODES}" "${SOUSTITRES}"
 
-  assertion__failing _fichier_existe "${TMP}/episodes/ma.serie.s01e02.srt"
+  assertion__failing _fichier_existe "${EPISODES}/ma.serie.s01e02.srt"
 }
 
 function _fichier_existe() {
