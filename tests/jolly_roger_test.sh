@@ -1,13 +1,10 @@
 function setup() {
-  TMP="/tmp/${RANDOM}"
-  EPISODES="${TMP}/episodes"
-  SOUSTITRES="${TMP}/soustitres"
-  mkdir -p "${EPISODES}"
-  mkdir -p "${SOUSTITRES}"
+  EPISODES="$(mktemp -d /tmp/episodes_XXXX)"
+  SOUSTITRES="$(mktemp -d /tmp/soustitres_XXXX)"
 }
 
 function teardown() {
-  rm -rf "${TMP}"
+  rm -rf "${EPISODES}" "${SOUSTITRES}"
 }
 
 function peut_copier_un_soustitre_avec_le_meme_nom_qu_un_episode() {
