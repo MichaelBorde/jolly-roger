@@ -18,7 +18,7 @@ function _copie_le_soustitre_qui_correspond() {
 
 function _si_le_soustitre_correspond_copie_le() {
   if episode__correspondent "${episode}" "${soustitre}"; then
-    local chemin_soustitre="$(episode__chemin_soustitre "${episode}")"
+    local chemin_soustitre="$(episode__soustitre_final "${episode}")"
     cp "${soustitre}" "${chemin_soustitre}"
   fi
 }
