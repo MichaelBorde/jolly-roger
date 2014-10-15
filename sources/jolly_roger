@@ -1,25 +1,25 @@
 source "sources/episode.sh"
 
 function programme() {
-  local repertoire_episodes=$1
-  local repertoire_soustitres=$2
+  local episodes="$1"
+  local soustitres="$2"
+
   local episode
-  for episode in $(find "${repertoire_episodes}" -name "*.avi"); do
+  for episode in $(find "${episodes}" -name "*.*"); do
     _copie_le_soustitre_qui_correspond
   done
 }
 
 function _copie_le_soustitre_qui_correspond() {
   local soustitre
-  for soustitre in $(find "${repertoire_soustitres}" -name "*.srt"); do
+  for soustitre in $(find "${soustitres}" -name "*.*"); do
     _si_le_soustitre_correspond_copie_le
   done
 }
 
 function _si_le_soustitre_correspond_copie_le() {
   if episode__correspondent "${episode}" "${soustitre}"; then
-    local chemin_soustitre="$(episode__soustitre_final "${episode}")"
-    cp "${soustitre}" "${chemin_soustitre}"
+    cp "${soustitre}" "$(episode__soustitre_final "${episode}")"
   fi
 }
 

@@ -4,7 +4,7 @@ function setup() {
 }
 
 function teardown() {
-  trash -rf "${EPISODES}" "${SOUSTITRES}"
+  trash "${EPISODES}" "${SOUSTITRES}"
 }
 
 function peut_copier_un_soustitre_avec_le_meme_nom_qu_un_episode() {

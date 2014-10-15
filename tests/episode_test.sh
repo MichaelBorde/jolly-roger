@@ -24,7 +24,7 @@ function un_soustitre_peut_ne_pas_correspond_du_tout() {
     episode__correspondent "ma.serie.s301e104.avi" "ma.serie.1e4.srt"
 }
 
-function le_chemin_du_soustitre_final_est_le_meme_que_lepisode() {
+function le_soustitre_final_est_le_meme_que_lepisode_a_lextension_pres() {
   local episode="mes/episodes/ma.serie.s01e12.avi"
 
   local soustitre="$(episode__soustitre_final "${episode}")"
