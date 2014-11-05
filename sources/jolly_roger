@@ -4,14 +4,14 @@ function programme() {
   local repertoire_episodes=$1
   local repertoire_soustitres=$2
   local episode
-  for episode in $(find "${repertoire_episodes}" -name "*.avi"); do
+  find "${repertoire_episodes}" -name "*.avi" | while read episode; do
     _copie_le_soustitre_qui_correspond
   done
 }
 
 function _copie_le_soustitre_qui_correspond() {
   local soustitre
-  for soustitre in $(find "${repertoire_soustitres}" -name "*.srt"); do
+  find "${repertoire_soustitres}" -name "*.srt" | while read soustitre; do
     _si_le_soustitre_correspond_copie_le
   done
 }
