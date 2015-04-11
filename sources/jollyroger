@@ -1,6 +1,6 @@
 source "sources/episode.sh"
 
-function programme() {
+programme() {
   local repertoire_episodes=$1
   local repertoire_soustitres=$2
   local episode
@@ -9,14 +9,14 @@ function programme() {
   done
 }
 
-function _copie_le_soustitre_qui_correspond() {
+_copie_le_soustitre_qui_correspond() {
   local soustitre
   find "${repertoire_soustitres}" -name "*.srt" | while read soustitre; do
     _si_le_soustitre_correspond_copie_le
   done
 }
 
-function _si_le_soustitre_correspond_copie_le() {
+_si_le_soustitre_correspond_copie_le() {
   if episode__correspondent "${episode}" "${soustitre}"; then
     local chemin_soustitre="$(episode__soustitre_final "${episode}")"
     cp "${soustitre}" "${chemin_soustitre}"
