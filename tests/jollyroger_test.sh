@@ -1,10 +1,10 @@
 setup() {
-  EPISODES="$(mktemp -d /tmp/episodes_XXXX)"
-  SOUSTITRES="$(mktemp -d /tmp/soustitres_XXXX)"
+  EPISODES="$(_cree_repertoire_temporaire "episodes")"
+  SOUSTITRES="$(_cree_repertoire_temporaire "soustitres")"
 }
 
 teardown() {
-  trash -rf "${EPISODES}" "${SOUSTITRES}"
+  rm -rf "${EPISODES}" "${SOUSTITRES}"
 }
 
 peut_copier_un_soustitre_avec_le_meme_nom_qu_un_episode() {
@@ -44,9 +44,16 @@ satisfait_le_test_dacceptation_du_readme() {
 }
 
 _fichier_existe() {
-  [[ -e "$1" ]]
+  [[ -f "$1" ]]
 }
 
 _nombre_fichiers() {
   find "$1" -name "*.*" | wc -l | tr -d ' '
+}
+
+_cree_repertoire_temporaire() {
+  local suffixe="$1"
+  local repertoire="/tmp/${RANDOM}_${suffixe}"
+  mkdir "${repertoire}"
+  echo "${repertoire}"
 }
